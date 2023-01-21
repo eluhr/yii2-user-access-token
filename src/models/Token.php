@@ -3,6 +3,7 @@
 namespace eluhr\userAuthToken\models;
 
 use DateTimeImmutable;
+use eluhr\userAuthToken\interfaces\TokenInterface;
 use eluhr\userAuthToken\models\query\TokenQuery;
 use Yii;
 use yii\db\ActiveQuery;
@@ -17,7 +18,7 @@ use yii\web\IdentityInterface;
  *
  * @property-read IdentityInterface $user
  */
-class Token extends ActiveRecord
+class Token extends ActiveRecord implements TokenInterface
 {
     /**
      * @inheritdoc
@@ -120,11 +121,7 @@ class Token extends ActiveRecord
 
 
     /**
-     * Find a valid and not expired token
-     *
-     * @param string $token
-     *
-     * @return Token|null
+     * @inheritdoc
      */
     public static function findValidToken(string $token): ?Token
     {
@@ -137,9 +134,9 @@ class Token extends ActiveRecord
     }
 
     /**
-     * Check if token is valid. This method should be overwritten in child classes
+     * This method should be overwritten in child classes
      *
-     * @return bool
+     * @inheritdoc
      */
     public function isValid(): bool
     {
