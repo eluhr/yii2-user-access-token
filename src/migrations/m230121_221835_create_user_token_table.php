@@ -15,7 +15,8 @@ class m230121_221835_create_user_token_table extends Migration
         $this->createTable('{{%user_auth_token}}', [
             'token' => $this->text()->notNull(),
             'user_id' => $this->string()->notNull(),
-            'expires_at' => $this->dateTime()->notNull()
+            'expires_at' => $this->dateTime()->notNull(),
+            'created_at' => $this->dateTime()->notNull()
         ]);
     }
 

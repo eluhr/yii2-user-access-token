@@ -13,6 +13,7 @@ use yii\web\IdentityInterface;
  * @property string $token
  * @property string $user_id
  * @property string $expires_at
+ * @property string $created_at
  *
  * @property-read IdentityInterface $user
  */
@@ -26,6 +27,9 @@ class Token extends ActiveRecord
         return '{{%user_auth_token}}';
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         $rules = parent::rules();
@@ -58,6 +62,11 @@ class Token extends ActiveRecord
             'min' => (new DateTimeImmutable())->format('Y-m-d H:i:s')
         ];
         $rules[] = [
+            'created_at',
+            'date',
+            'format' => 'php:Y-m-d H:i:s'
+        ];
+        $rules[] = [
             'user_id',
             'exist',
             'targetClass' => Yii::$app->getUser()->identityClass,
@@ -69,12 +78,25 @@ class Token extends ActiveRecord
     /**
      * @inheritdoc
      */
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            // always set created_at on insert. Do not allow to set it manually
+            $this->setAttribute('created_at', (new DateTimeImmutable())->format('Y-m-d H:i:s'));
+        }
+        return parent::beforeSave($insert);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         $attributeLabels = parent::attributeLabels();
         $attributeLabels['token'] = Yii::t('eluhr.user-auth-token', 'Token');
         $attributeLabels['user_id'] = Yii::t('eluhr.user-auth-token', 'User ID');
         $attributeLabels['expires_at'] = Yii::t('eluhr.user-auth-token', 'Expires At');
+        $attributeLabels['created_at'] = Yii::t('eluhr.user-auth-token', 'Created At');
         return $attributeLabels;
     }
 
@@ -107,6 +129,7 @@ class Token extends ActiveRecord
     public static function findValidToken(string $token): ?Token
     {
         $model = static::find()->token($token)->notIsExpired()->one();
+        // check if entry exists and is valid
         if ($model && $model->isValid()) {
             return $model;
         }
