@@ -30,6 +30,11 @@ class Token extends ActiveRecord
     {
         $rules = parent::rules();
         $rules[] = [
+            'token',
+            'filter',
+            'filter' => 'trim'
+        ];
+        $rules[] = [
             [
                 'token',
                 'user_id',
