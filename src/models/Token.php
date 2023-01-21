@@ -101,9 +101,9 @@ class Token extends ActiveRecord
      */
     public static function findValidToken(string $token): ?Token
     {
-        $token = static::find()->token($token)->notIsExpired()->one();
-        if ($token && $token->isValid()) {
-            return $token;
+        $model = static::find()->token($token)->notIsExpired()->one();
+        if ($model && $model->isValid()) {
+            return $model;
         }
         return null;
     }
