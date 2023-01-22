@@ -2,7 +2,7 @@
 
 namespace eluhr\userAuthToken\models;
 
-use DateTimeImmutable;
+use eluhr\userAuthToken\helpers\DateHelper;
 use eluhr\userAuthToken\interfaces\TokenInterface;
 use eluhr\userAuthToken\models\query\TokenQuery;
 use Yii;
@@ -60,7 +60,7 @@ class Token extends ActiveRecord implements TokenInterface
             'expires_at',
             'date',
             'format' => 'php:Y-m-d H:i:s',
-            'min' => (new DateTimeImmutable())->format('Y-m-d H:i:s')
+            'min' => DateHelper::now()
         ];
         $rules[] = [
             'created_at',
@@ -83,7 +83,7 @@ class Token extends ActiveRecord implements TokenInterface
     {
         if ($insert) {
             // always set created_at on insert. Do not allow to set it manually
-            $this->setAttribute('created_at', (new DateTimeImmutable())->format('Y-m-d H:i:s'));
+            $this->setAttribute('created_at', DateHelper::now());
         }
         return parent::beforeSave($insert);
     }

@@ -2,7 +2,7 @@
 
 namespace eluhr\userAuthToken\models\query;
 
-use DateTimeImmutable;
+use eluhr\userAuthToken\helpers\DateHelper;
 use eluhr\userAuthToken\models\Token;
 use yii\db\ActiveQuery;
 
@@ -34,6 +34,6 @@ class TokenQuery extends ActiveQuery
      */
     public function notIsExpired(): TokenQuery
     {
-        return $this->andWhere(['>', 'expires_at', (new DateTimeImmutable())->format('Y-m-d H:i:s')]);
+        return $this->andWhere(['>', 'expires_at', DateHelper::now()]);
     }
 }

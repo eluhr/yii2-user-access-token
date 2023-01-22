@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace eluhr\userAuthToken\interfaces;
 
 use eluhr\userAuthToken\models\Token;
