@@ -34,12 +34,12 @@ class Token extends ActiveRecord implements TokenInterface
     public function rules()
     {
         $rules = parent::rules();
-        $rules[] = [
+        $rules['token-trim'] = [
             'token',
             'filter',
             'filter' => 'trim'
         ];
-        $rules[] = [
+        $rules['all-required'] = [
             [
                 'token',
                 'user_id',
@@ -47,27 +47,22 @@ class Token extends ActiveRecord implements TokenInterface
             ],
             'required'
         ];
-        $rules[] = [
+        $rules['token-unique'] = [
             'token',
             'unique'
         ];
-        $rules[] = [
-            'token',
-            'string',
-            'max' => 128
-        ];
-        $rules[] = [
+        $rules['expired_at-bigger-than-now'] = [
             'expires_at',
             'date',
             'format' => 'php:Y-m-d H:i:s',
             'min' => DateHelper::now()
         ];
-        $rules[] = [
+        $rules['created_at-format'] = [
             'created_at',
             'date',
             'format' => 'php:Y-m-d H:i:s'
         ];
-        $rules[] = [
+        $rules['user-reference'] = [
             'user_id',
             'exist',
             'targetClass' => Yii::$app->getUser()->identityClass,
