@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
+ * @property int $id
  * @property string $token
  * @property string $user_id
  * @property string $expires_at
