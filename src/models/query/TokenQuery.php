@@ -1,13 +1,13 @@
 <?php
 
-namespace eluhr\userAuthToken\models\query;
+namespace eluhr\userAccessToken\models\query;
 
-use eluhr\userAuthToken\helpers\DateHelper;
-use eluhr\userAuthToken\models\Token;
+use eluhr\userAccessToken\helpers\DateHelper;
+use eluhr\userAccessToken\models\Token;
 use yii\db\ActiveQuery;
 
 /**
- * @see \eluhr\userAuthToken\models\Token
+ * @see \eluhr\userAccessToken\models\Token
  *
  * @method Token[]|array all($db = null)
  * @method Token|null one($db = null)
