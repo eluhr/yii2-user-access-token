@@ -2,9 +2,9 @@
 
 namespace eluhr\userAuthToken\models;
 
-use eluhr\userAuthToken\helpers\DateHelper;
-use eluhr\userAuthToken\interfaces\TokenInterface;
-use eluhr\userAuthToken\models\query\TokenQuery;
+use eluhr\userAccessToken\helpers\DateHelper;
+use eluhr\userAccessToken\interfaces\TokenInterface;
+use eluhr\userAccessToken\models\query\TokenQuery;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -26,7 +26,7 @@ class Token extends ActiveRecord implements TokenInterface
      */
     public static function tableName()
     {
-        return '{{%user_auth_token}}';
+        return '{{%user_access_token}}';
     }
 
     /**
