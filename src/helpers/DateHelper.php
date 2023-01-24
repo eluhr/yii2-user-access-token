@@ -1,6 +1,6 @@
 <?php
 
-namespace eluhr\userAuthToken\helpers;
+namespace eluhr\userAccessToken\helpers;
 
 use DateTimeImmutable;
 
