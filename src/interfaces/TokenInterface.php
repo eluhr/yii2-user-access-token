@@ -2,7 +2,7 @@
 
 namespace eluhr\userAccessToken\interfaces;
 
-use eluhr\userAuthToken\models\Token;
+use eluhr\userAccessToken\models\Token;
 
 interface TokenInterface
 {

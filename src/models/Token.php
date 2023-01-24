@@ -1,6 +1,6 @@
 <?php
 
-namespace eluhr\userAuthToken\models;
+namespace eluhr\userAccessToken\models;
 
 use eluhr\userAccessToken\helpers\DateHelper;
 use eluhr\userAccessToken\interfaces\TokenInterface;
