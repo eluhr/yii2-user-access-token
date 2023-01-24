@@ -1,4 +1,4 @@
-# Yii2 User Auth Token
+# Yii2 User Access Token
 
 This extension provides a simple way to authenticate users via a token. It is easily extendable and can be used with any
 user model.
@@ -6,7 +6,7 @@ user model.
 ### Installation
 
 ```bash
-composer require eluhr/yii2-user-auth-token
+composer require eluhr/yii2-user-access-token
 ```
 
 ### Configuration
@@ -19,7 +19,7 @@ return [
     'controllerMap' => [
         'migrate' => [
             'migrationPath' => [
-                '@vendor/eluhr/yii2-user-auth-token/src/migrations'
+                '@vendor/eluhr/yii2-user-access-token/src/migrations'
             ]
         ]
     ]
@@ -35,7 +35,7 @@ In your user model you can do this:
 
 namespace app\models;
 
-use eluhr\userAuthToken\models\Token;
+use eluhr\userAccessToken\models\Token;
 use yii\base\NotSupportedException;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\IdentityInterface;
@@ -69,7 +69,7 @@ In your controller:
 ```php
 <?php
 
-namespace eluhr\userAuthToken\controllers;
+namespace app\controllers;
 
 use yii\filters\AccessControl;
 use yii\filters\auth\QueryParamAuth;
