@@ -1,6 +1,6 @@
 <?php
 
-namespace eluhr\userAuthToken\interfaces;
+namespace eluhr\userAccessToken\interfaces;
 
 use eluhr\userAuthToken\models\Token;
 
