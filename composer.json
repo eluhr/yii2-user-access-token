@@ -1,6 +1,6 @@
 {
-  "name": "eluhr/yii2-user-auth-token",
-  "description": "User auth token Yii2",
+  "name": "eluhr/yii2-user-access-token",
+  "description": "User access token Yii2",
   "minimum-stability": "stable",
   "keywords": [
     "yii2",
@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "eluhr\\userAuthToken\\": "src"
+      "eluhr\\userAccessToken\\": "src"
     }
   }
 }
